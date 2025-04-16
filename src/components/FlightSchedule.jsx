@@ -22,7 +22,6 @@ const FlightSchedule = () => {
 		    const rawData = await response.json();
 		    getData = JSON.stringify(rawData, null, 4);
 		    console.log("RECEIVED:", getData);
-        // networkConnection = true;
         for(var id in rawData){
           if(rawData.hasOwnProperty(id)){
             var value = rawData[id];
@@ -46,11 +45,6 @@ const FlightSchedule = () => {
           }
           
         }
-        
-        
-        
-        
-        
         
        
         setFlights(backendFlights);
