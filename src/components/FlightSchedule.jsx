@@ -8,10 +8,11 @@ const FlightSchedule = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+   
     const fetchFlights = async () => {
+      let backendFlights =[];
       let getData;
       let fetchURL = 'http://localhost:8080/api/aircrafts'
-      
       
       
       try {
@@ -25,7 +26,21 @@ const FlightSchedule = () => {
         for(var id in rawData){
           if(rawData.hasOwnProperty(id)){
             var value = rawData[id];
-            console.log("HEY! LOOK HERE!",value.type)
+            backendFlights.push(
+              {
+                id: value.id,
+                flightNumber: value.id,
+                airlineName: value.airlineName,
+                departure: 'YYZ',
+                arrival: 'JFK',
+                aircraftType: value.type
+              }
+            );
+
+
+
+
+            console.log("HEY! LOOK HERE!",backendFlights)
           }else{
             console.log("somethings not right!")
           }
@@ -37,29 +52,8 @@ const FlightSchedule = () => {
         
         
         
-        const mockFlights = [
-          {
-            id: 1,
-            flightNumber: 'AA123',
-            departure: 'YYZ',
-            arrival: 'JFK',
-            departureTime: '2023-12-01T08:00:00',
-            arrivalTime: '2023-12-01T10:30:00',
-            status: 'On Time',
-            aircraftType: value.type
-          },
-          {
-            id: 2,
-            flightNumber: 'DL456',
-            departure: 'JFK',
-            arrival: 'LAX',
-            departureTime: '2023-12-01T12:00:00',
-            arrivalTime: '2023-12-01T15:30:00',
-            status: 'Delayed',
-            aircraftType: 'Airbus A320'
-          }
-        ];
-        setFlights(mockFlights);
+       
+        setFlights(backendFlights);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -81,11 +75,9 @@ const FlightSchedule = () => {
           <thead>
             <tr>
               <th>Flight #</th>
+              <th>Airline Name</th>
               <th>Departure</th>
               <th>Arrival</th>
-              <th>Departure Time</th>
-              <th>Arrival Time</th>
-              <th>Status</th>
               <th>Aircraft</th>
             </tr>
           </thead>
@@ -93,13 +85,9 @@ const FlightSchedule = () => {
             {flights.map(flight => (
               <tr key={flight.id}>
                 <td>{flight.flightNumber}</td>
+                <td>{flight.airlineName}</td>
                 <td>{flight.departure}</td>
                 <td>{flight.arrival}</td>
-                <td>{new Date(flight.departureTime).toLocaleString()}</td>
-                <td>{new Date(flight.arrivalTime).toLocaleString()}</td>
-                <td className={`status-${flight.status.toLowerCase().replace(' ', '-')}`}>
-                  {flight.status}
-                </td>
                 <td>{flight.aircraftType}</td>
               </tr>
             ))}
