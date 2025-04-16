@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FlightSchedule from '../components/FlightSchedule';
 import PassengerCheckIn from '../components/PassengerCheckIn';
 import AirportDisplay from '../components/AirportDisplay';
+import CitiesDisplay from '../components/CitiesDisplay';
 
 import '../styles/theme.css';
 
