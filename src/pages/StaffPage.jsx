@@ -25,6 +25,12 @@ const StaffPage = () => {
           Airport Management
         </button>
         <button
+          className={activeTab === 'cities' ? 'active' : ''}
+          onClick={() => setActiveTab('cities')}
+        >
+          Cities Management
+        </button>
+        <button
           className={activeTab === 'checkin' ? 'active' : ''}
           onClick={() => setActiveTab('checkin')}
         >
@@ -36,6 +42,7 @@ const StaffPage = () => {
         {activeTab === 'flights' && <FlightSchedule staffView={true} />}
         {activeTab === 'checkin' && <PassengerCheckIn staffView={true} />}
         {activeTab === 'airports' && <AirportDisplay staffView={true} />}
+        {activeTab === 'cities' && <CitiesDisplay staffView={true} />}
       </div>
     </div>
   );
