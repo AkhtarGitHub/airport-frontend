@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import FlightSchedule from '../components/FlightSchedule';
 import PassengerCheckIn from '../components/PassengerCheckIn';
+import AirportDisplay from '../components/AirportDisplay';
+
 import '../styles/theme.css';
 
 const StaffPage = () => {
@@ -17,6 +19,12 @@ const StaffPage = () => {
           Flight Management
         </button>
         <button
+          className={activeTab === 'airports' ? 'active' : ''}
+          onClick={() => setActiveTab('airports')}
+        >
+          Airport Management
+        </button>
+        <button
           className={activeTab === 'checkin' ? 'active' : ''}
           onClick={() => setActiveTab('checkin')}
         >
@@ -27,6 +35,7 @@ const StaffPage = () => {
       <div className="tab-content">
         {activeTab === 'flights' && <FlightSchedule staffView={true} />}
         {activeTab === 'checkin' && <PassengerCheckIn staffView={true} />}
+        {activeTab === 'airports' && <AirportDisplay staffView={true} />}
       </div>
     </div>
   );
