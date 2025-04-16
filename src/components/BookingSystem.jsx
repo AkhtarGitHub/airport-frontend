@@ -2,12 +2,13 @@ import { useState } from 'react';
 import '../styles/theme.css';
 
 const BookingSystem = () => {
+
+  // this is the basic format the json will take
   const [formData, setFormData] = useState({
-    flightId: '',
-    passengerName: '',
-    passportNumber: '',
-    email: '',
-    phone: ''
+    aircraft: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: ''
   });
 
   const handleChange = (e) => {
@@ -18,18 +19,42 @@ const BookingSystem = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real app, you would send this data to your backend
-    console.log('Booking submitted:', formData);
-    alert('Booking submitted successfully!');
-    setFormData({
-      flightId: '',
-      passengerName: '',
-      passportNumber: '',
-      email: '',
-      phone: ''
-    });
+
+    // here i parse the id from the form data for aircraft, as the database expects aircraft to be an object with an id
+    const readyData = {
+      aircraft: [{
+        id: parseInt(formData.aircraft),
+      }],
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phoneNumber: formData.phoneNumber
+    };
+
+// send post request to add passenger to the database
+    try {
+      const response = await fetch('http://localhost:8080/api/passenger', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(readyData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Booking submitted:', data);
+      alert('Booking submitted successfully!');
+      
+    } catch (error) {
+      console.error('Error submitting booking:', error);
+      console.log('Heres what you sent:', readyData)
+      alert('Booking failed. Please try again.');
+    }
   };
 
   return (
@@ -37,60 +62,48 @@ const BookingSystem = () => {
       <h2>Book a Flight</h2>
       <form onSubmit={handleSubmit} className="booking-form">
         <div className="form-group">
-          <label htmlFor="flightId">Flight Number:</label>
+          <label htmlFor="aircraft">Flight Number:</label>
           <input
             type="text"
-            id="flightId"
-            name="flightId"
-            value={formData.flightId}
+            id="aircraft"
+            name="aircraft"
+            value={formData.aircraft}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="passengerName">Passenger Name:</label>
+          <label htmlFor="firstName">First Name:</label>
           <input
             type="text"
-            id="passengerName"
-            name="passengerName"
-            value={formData.passengerName}
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="passportNumber">Passport Number:</label>
+          <label htmlFor="lastName">Last Name:</label>
           <input
             type="text"
-            id="passportNumber"
-            name="passportNumber"
-            value={formData.passportNumber}
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
             required
           />
         </div>
 
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="phone">Phone:</label>
+          <label htmlFor="phoneNumber">Phone:</label>
           <input
             type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
+            id="phoneNumber"
+            name="phoneNumber"
+            value={formData.phoneNumber}
             onChange={handleChange}
             required
           />
