@@ -9,10 +9,34 @@ const FlightSchedule = () => {
 
   useEffect(() => {
     const fetchFlights = async () => {
+      let getData;
+      let fetchURL = 'http://localhost:8080/api/aircrafts'
+      
+      
+      
       try {
-        // In a real app, you would call the actual API
-        // const data = await getFlights();
-        // For demo, we'll use mock data
+      //  i'm now in the process of changing out 
+      // the mock data for backend data
+        const response = await fetch(fetchURL);
+		    const rawData = await response.json();
+		    getData = JSON.stringify(rawData, null, 4);
+		    console.log("RECEIVED:", getData);
+        // networkConnection = true;
+        for(var id in rawData){
+          if(rawData.hasOwnProperty(id)){
+            var value = rawData[id];
+            console.log("HEY! LOOK HERE!",value.type)
+          }else{
+            console.log("somethings not right!")
+          }
+          
+        }
+        
+        
+        
+        
+        
+        
         const mockFlights = [
           {
             id: 1,
@@ -22,7 +46,7 @@ const FlightSchedule = () => {
             departureTime: '2023-12-01T08:00:00',
             arrivalTime: '2023-12-01T10:30:00',
             status: 'On Time',
-            aircraftType: 'Boeing 737'
+            aircraftType: value.type
           },
           {
             id: 2,
