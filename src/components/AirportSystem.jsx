@@ -1,0 +1,92 @@
+import { useState } from "react";
+import "../styles/theme.css";
+
+const AddAirport = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    city: "",
+    country: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const airportData = {
+      name: formData.name,
+      city: formData.city,
+      country: formData.country,
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/api/airports", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(airportData),
+      });
+
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
+
+      const data = await response.json();
+      console.log("Airport added:", data);
+      alert("Airport added successfully!");
+    } catch (error) {
+      console.error("Error adding airport:", error);
+      alert("Failed to add airport.");
+    }
+  };
+
+  return (
+    <div className="booking-system">
+      <h2>Add Airport</h2>
+      <form onSubmit={handleSubmit} className="booking-form">
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="city">City:</label>
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="country">Country:</label>
+          <input
+            type="text"
+            id="country"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit" className="submit-btn">
+          Add Airport
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default AddAirport;
