@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
 import '../styles/theme.css';
 
+/*
+   AdminPage is the administrative dashboard component, used for when any administrators log onto the website.
+   They can see, access, and manage core entities in the system, these can include:
+
+   - Displaying a list of airports with options to add, edit, or delete
+   - Display a list of aircrafts, including their type, airline name, capacity, and management options
+   - Display a list of passengers, their first and last name, phone numbers, and the ability to manage entries
+
+   This page utilizes mock data (shown below) and simulates asynchronous data loading to provide a demonstration
+   of its functionality!
+*/
 const AdminPage = () => {
   const [airports, setAirports] = useState([]);
   const [aircrafts, setAircrafts] = useState([]);
