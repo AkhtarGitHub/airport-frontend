@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getFlights } from '../services/api';
 import '../styles/theme.css';
 
 const FlightSchedule = () => {
