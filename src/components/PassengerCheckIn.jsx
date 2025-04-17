@@ -8,8 +8,15 @@ const PassengerCheckIn = () => {
 
   const handleCheckIn = (e) => {
     e.preventDefault();
-    // In a real app, you would call your backend API
-    // For demo, we'll use mock data
+   //about to start adding this feature with backend hookup
+   
+   
+   
+   
+   
+   
+   
+   
     if (bookingRef === 'ABC123') {
       setPassenger({
         name: 'John Doe',
@@ -54,7 +61,6 @@ const PassengerCheckIn = () => {
             <p><strong>From:</strong> {passenger.departure}</p>
             <p><strong>To:</strong> {passenger.arrival}</p>
             <p><strong>Departure:</strong> {new Date(passenger.departureTime).toLocaleString()}</p>
-            <p><strong>Seat:</strong> {passenger.seat}</p>
           </div>
           <button className="print-btn">Print Boarding Pass</button>
         </div>
