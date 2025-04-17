@@ -147,7 +147,12 @@ const AdminPage = () => {
               ))}
             </tbody>
           </table>
-          <button className="add-btn">Add Airport</button>
+          <button
+            className={activeTab === "airports" ? "active" : ""}
+            onClick={() => setActiveTab("airports")}
+          >
+            Add Airport
+          </button>
         </section>
 
         <section className="admin-section">
@@ -175,7 +180,12 @@ const AdminPage = () => {
               ))}
             </tbody>
           </table>
-          <button className="add-btn">Add Aircraft</button>
+          <button
+            className={activeTab === "aircraft" ? "active" : ""}
+            onClick={() => setActiveTab("aircraft")}
+          >
+            Add Aircraft
+          </button>
         </section>
 
         <section className="admin-section">
@@ -203,8 +213,19 @@ const AdminPage = () => {
               ))}
             </tbody>
           </table>
-          <button className="add-btn">Add Passenger</button>
+          <button
+            className={activeTab === "booking" ? "active" : ""}
+            onClick={() => setActiveTab("booking")}
+          >
+            Add Passenger
+          </button>
         </section>
+      </div>
+
+      <div className="tab-content">
+        {activeTab === "airports" && <AirportDisplay />}
+        {activeTab === "aircraft" && <AircraftSystem />}
+        {activeTab === "booking" && <BookingSystem />}
       </div>
     </div>
   );
