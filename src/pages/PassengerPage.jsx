@@ -4,6 +4,17 @@ import BookingSystem from '../components/BookingSystem';
 import PassengerCheckIn from '../components/PassengerCheckIn';
 import '../styles/theme.css';
 
+/*
+   PassengerPage is the main interface for users who are passengers, providing a simple UI to navigate
+   the website through the following features:
+
+   = Flight scheduling: use this to view available flights and their details
+   - Book a flight: access the booking system and reserve seats
+   - Check-in: complete a check-in process before boarding a flight (not literally)
+
+   The active tab is controlled using React state, and only one component is rendered at a given time
+   based on which tab is selected!
+*/
 const PassengerPage = () => {
   const [activeTab, setActiveTab] = useState('flights');
 

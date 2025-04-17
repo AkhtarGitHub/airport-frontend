@@ -6,6 +6,18 @@ import CitiesDisplay from '../components/CitiesDisplay';
 
 import '../styles/theme.css';
 
+/*
+   StaffPage is the interface for any airline staff member, this gives them access to various admin tools
+   that are otherwise blocked from PassengerPage:
+
+   - Flight management: view/manage the flight schedule
+   - Airport management: display/modify any airport data
+   - Cities management: manage city information linked to airports
+   - Passenger check-in: assist with checking in passengers
+
+   Tabs will control the displayed component with the local state, and the function `staffView={true}`
+   is passed to enable staff-related privileges.
+*/
 const StaffPage = () => {
   const [activeTab, setActiveTab] = useState('flights');
 

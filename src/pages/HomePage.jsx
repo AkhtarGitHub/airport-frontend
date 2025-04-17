@@ -1,5 +1,17 @@
 import '../styles/theme.css';
 
+/*
+   HomePage is the landing page of this Airport Management System web application, and the page you should always see
+   upon booting the program. Being the introductory page, this .jsx introduces users to the platform and highlights
+   the main features of the system:
+
+   - Allows for real-time management of flight scheduling
+   - Allows for passengers to book flights quickly and easily
+   - Offers an easy, streamlined check-in experience for travelers
+
+   This page (alongside all others) has a very formal layout presented with CSS, which can be found in the /styles
+   folder!
+*/
 const HomePage = () => {
   return (
     <div className="home-page">
