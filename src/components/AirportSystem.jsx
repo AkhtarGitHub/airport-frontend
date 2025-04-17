@@ -26,7 +26,7 @@ const AddAirport = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/api/airports", {
+      const response = await fetch("http://52.90.70.129:8080/api/airports", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(airportData),

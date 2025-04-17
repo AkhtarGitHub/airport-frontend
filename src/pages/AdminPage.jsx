@@ -23,7 +23,7 @@ const AdminPage = () => {
     const fetchPassengers = async () => {
       let backendPassengers = [];
       let getData;
-      let fetchURL = "http://localhost:8080/api/passengers";
+      let fetchURL = "http://52.90.70.129:8080/api/passengers";
       try {
         const response = await fetch(fetchURL);
         const rawData = await response.json();
