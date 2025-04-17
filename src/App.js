@@ -6,6 +6,7 @@ import PassengerPage from "./pages/PassengerPage";
 import StaffPage from "./pages/StaffPage";
 import AdminPage from "./pages/AdminPage";
 import AircraftSystem from "./components/AircraftSystem";
+import AirportSystem from "./components/AirportSystem";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/staff" element={<StaffPage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/aircraft" element={<AircraftSystem />} />
+          <Route path="/airport" element={<AirportSystem />} />
         </Routes>
       </main>
       <Footer />
