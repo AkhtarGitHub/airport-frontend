@@ -13,8 +13,6 @@ const AdminPage = () => {
       let getData;
       let fetchURL = "http://localhost:8080/api/passengers";
       try {
-        //  i'm now in the process of changing out
-        // the mock data for backend data
         const response = await fetch(fetchURL);
         const rawData = await response.json();
         getData = JSON.stringify(rawData, null, 4);
@@ -28,7 +26,6 @@ const AdminPage = () => {
               lastName: value.lastName,
               phoneNumber: value.phoneNumber,
             });
-            console.log("HEY! LOOK HERE!", backendFlights);
           } else {
             console.log("somethings not right!");
           }
@@ -37,7 +34,6 @@ const AdminPage = () => {
         setPassengers(backendPassengers);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
         setLoading(false);
       }
     };
@@ -49,8 +45,6 @@ const AdminPage = () => {
       let getData;
       let fetchURL = "http://localhost:8080/api/airports";
       try {
-        //  i'm now in the process of changing out
-        // the mock data for backend data
         const response = await fetch(fetchURL);
         const rawData = await response.json();
         getData = JSON.stringify(rawData, null, 4);
@@ -63,7 +57,6 @@ const AdminPage = () => {
               code: value.code,
               name: value.name,
             });
-            console.log("HEY! LOOK HERE!", backendFlights);
           } else {
             console.log("somethings not right!");
           }
@@ -72,7 +65,6 @@ const AdminPage = () => {
         setAirports(backendAirports);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
         setLoading(false);
       }
     };
@@ -84,8 +76,6 @@ const AdminPage = () => {
       let getData;
       let fetchURL = "http://localhost:8080/api/aircrafts";
       try {
-        //  i'm now in the process of changing out
-        // the mock data for backend data
         const response = await fetch(fetchURL);
         const rawData = await response.json();
         getData = JSON.stringify(rawData, null, 4);
@@ -99,7 +89,6 @@ const AdminPage = () => {
               airlineName: value.airlineName,
               numberOfPassengers: value.numberOfPassengers,
             });
-            console.log("HEY! LOOK HERE!", backendFlights);
           } else {
             console.log("somethings not right!");
           }
@@ -108,7 +97,6 @@ const AdminPage = () => {
         setAircrafts(backendAircrafts);
         setLoading(false);
       } catch (err) {
-        setError(err.message);
         setLoading(false);
       }
     };
@@ -117,7 +105,6 @@ const AdminPage = () => {
   }, []);
 
   if (loading) return <div>Loading admin dashboard...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="admin-page">
