@@ -1,10 +1,12 @@
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import PassengerPage from './pages/PassengerPage';
-import StaffPage from './pages/StaffPage';
-import AdminPage from './pages/AdminPage';
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import PassengerPage from "./pages/PassengerPage";
+import StaffPage from "./pages/StaffPage";
+import AdminPage from "./pages/AdminPage";
+import AircraftSystem from "./components/AircraftSystem";
+import AirportSystem from "./components/AirportSystem";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/passenger" element={<PassengerPage />} />
           <Route path="/staff" element={<StaffPage />} />
           <Route path="/admin" element={<AdminPage />} />
+          <Route path="/aircraft" element={<AircraftSystem />} />
+          <Route path="/airport" element={<AirportSystem />} />
         </Routes>
       </main>
       <Footer />
