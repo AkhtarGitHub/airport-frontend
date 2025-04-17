@@ -159,6 +159,16 @@
   font-weight: 500;
 }
 
+.admin-link{
+  color: #e1e9f0;
+  background-color: #0666ce;
+  padding: 10px;
+  border-radius: 16px 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar-container {
