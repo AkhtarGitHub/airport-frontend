@@ -17,7 +17,7 @@ function App() {
           <Route path="/passenger" element={<PassengerPage />} />
           <Route path="/staff" element={<StaffPage />} />
           <Route path="/admin" element={<AdminPage />} />
-          <Route path="/aircraft" element={<AddAircraft />} />
+          <Route path="/aircraft" element={<AircraftSystem />} />
         </Routes>
       </main>
       <Footer />
