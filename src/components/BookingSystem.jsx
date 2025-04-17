@@ -34,7 +34,7 @@ const BookingSystem = () => {
 
 // send post request to add passenger to the database
     try {
-      const response = await fetch('http://localhost:8080/api/passenger', {
+      const response = await fetch('http://52.90.70.129:8080/api/passenger', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -12,7 +12,7 @@ const AirportList = () => {
 	const fetchAirports = async () => {
 	  let backendAirports =[];
 	  let getData;
-	  let fetchURL = 'http://localhost:8080/api/airports'
+	  let fetchURL = 'http://52.90.70.129:8080/api/airports'
 	  
 	  
 	  try {
