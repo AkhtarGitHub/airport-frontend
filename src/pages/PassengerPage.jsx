@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import FlightSchedule from '../components/FlightSchedule';
-import BookingSystem from '../components/BookingSystem';
-import PassengerCheckIn from '../components/PassengerCheckIn';
-import '../styles/theme.css';
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import FlightSchedule from "../components/FlightSchedule";
+import BookingSystem from "../components/BookingSystem";
+import PassengerCheckIn from "../components/PassengerCheckIn";
+import "../styles/theme.css";
 
 /*
    PassengerPage is the main interface for users who are passengers, providing a simple UI to navigate
@@ -16,35 +17,36 @@ import '../styles/theme.css';
    based on which tab is selected!
 */
 const PassengerPage = () => {
-  const [activeTab, setActiveTab] = useState('flights');
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.state?.tab || "flights");
 
   return (
     <div className="passenger-page">
       <div className="tab-buttons">
         <button
-          className={activeTab === 'flights' ? 'active' : ''}
-          onClick={() => setActiveTab('flights')}
+          className={activeTab === "flights" ? "active" : ""}
+          onClick={() => setActiveTab("flights")}
         >
           Flight Schedules
         </button>
         <button
-          className={activeTab === 'booking' ? 'active' : ''}
-          onClick={() => setActiveTab('booking')}
+          className={activeTab === "booking" ? "active" : ""}
+          onClick={() => setActiveTab("booking")}
         >
           Book a Flight
         </button>
         <button
-          className={activeTab === 'checkin' ? 'active' : ''}
-          onClick={() => setActiveTab('checkin')}
+          className={activeTab === "checkin" ? "active" : ""}
+          onClick={() => setActiveTab("checkin")}
         >
           Check-In
         </button>
       </div>
 
       <div className="tab-content">
-        {activeTab === 'flights' && <FlightSchedule />}
-        {activeTab === 'booking' && <BookingSystem />}
-        {activeTab === 'checkin' && <PassengerCheckIn />}
+        {activeTab === "flights" && <FlightSchedule />}
+        {activeTab === "booking" && <BookingSystem />}
+        {activeTab === "checkin" && <PassengerCheckIn />}
       </div>
     </div>
   );

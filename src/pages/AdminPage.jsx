@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import '../styles/theme.css';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "../styles/theme.css";
 
 /*
    AdminPage is the administrative dashboard component, used for when any administrators log onto the website.
@@ -19,27 +20,104 @@ const AdminPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // In a real app, you would call your backend API
-    // For demo, we'll use mock data
-    setTimeout(() => {
-      setAirports([
-        { id: 1, code: 'YYZ', name: 'Toronto Pearson' },
-        { id: 2, code: 'JFK', name: 'John F. Kennedy' },
-        { id: 3, code: 'LAX', name: 'Los Angeles International' }
-      ]);
+    const fetchPassengers = async () => {
+      let backendPassengers = [];
+      let getData;
+      let fetchURL = "http://localhost:8080/api/passengers";
+      try {
+        const response = await fetch(fetchURL);
+        const rawData = await response.json();
+        getData = JSON.stringify(rawData, null, 4);
+        console.log("RECEIVED:", getData);
+        for (var id in rawData) {
+          if (rawData.hasOwnProperty(id)) {
+            var value = rawData[id];
+            backendPassengers.push({
+              id: value.id,
+              firstName: value.firstName,
+              lastName: value.lastName,
+              phoneNumber: value.phoneNumber,
+            });
+          } else {
+            console.log("somethings not right!");
+          }
+        }
 
-      setAircrafts([
-        { id: 1, type: 'Boeing 737', airlineName: 'Air Canada', numberOfPassengers: 150 },
-        { id: 2, type: 'Airbus A320', airlineName: 'WestJet', numberOfPassengers: 180 }
-      ]);
+        setPassengers(backendPassengers);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
+    };
 
-      setPassengers([
-        { id: 1, firstName: 'John', lastName: 'Doe', phoneNumber: '123-456-7890' },
-        { id: 2, firstName: 'Jane', lastName: 'Smith', phoneNumber: '987-654-3210' }
-      ]);
+    fetchPassengers();
 
-      setLoading(false);
-    }, 1000);
+    const fetchAirports = async () => {
+      let backendAirports = [];
+      let getData;
+      let fetchURL = "http://localhost:8080/api/airports";
+      try {
+        //  i'm now in the process of changing out
+        // the mock data for backend data
+        const response = await fetch(fetchURL);
+        const rawData = await response.json();
+        getData = JSON.stringify(rawData, null, 4);
+        console.log("RECEIVED:", getData);
+        for (var id in rawData) {
+          if (rawData.hasOwnProperty(id)) {
+            var value = rawData[id];
+            backendAirports.push({
+              id: value.id,
+              code: value.code,
+              name: value.name,
+            });
+          } else {
+            console.log("somethings not right!");
+          }
+        }
+
+        setAirports(backendAirports);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
+    };
+
+    fetchAirports();
+
+    const fetchAircrafts = async () => {
+      let backendAircrafts = [];
+      let getData;
+      let fetchURL = "http://localhost:8080/api/aircrafts";
+      try {
+        //  i'm now in the process of changing out
+        // the mock data for backend data
+        const response = await fetch(fetchURL);
+        const rawData = await response.json();
+        getData = JSON.stringify(rawData, null, 4);
+        console.log("RECEIVED:", getData);
+        for (var id in rawData) {
+          if (rawData.hasOwnProperty(id)) {
+            var value = rawData[id];
+            backendAircrafts.push({
+              id: value.id,
+              type: value.type,
+              airlineName: value.airlineName,
+              numberOfPassengers: value.numberOfPassengers,
+            });
+          } else {
+            console.log("somethings not right!");
+          }
+        }
+
+        setAircrafts(backendAircrafts);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
+    };
+
+    fetchAircrafts();
   }, []);
 
   if (loading) return <div>Loading admin dashboard...</div>;
@@ -60,7 +138,7 @@ const AdminPage = () => {
               </tr>
             </thead>
             <tbody>
-              {airports.map(airport => (
+              {airports.map((airport) => (
                 <tr key={airport.id}>
                   <td>{airport.code}</td>
                   <td>{airport.name}</td>
@@ -72,7 +150,9 @@ const AdminPage = () => {
               ))}
             </tbody>
           </table>
-          <button className="add-btn">Add Airport</button>
+          <Link to="/airports" class="admin-link">
+            Add Airport
+          </Link>
         </section>
 
         <section className="admin-section">
@@ -87,7 +167,7 @@ const AdminPage = () => {
               </tr>
             </thead>
             <tbody>
-              {aircrafts.map(aircraft => (
+              {aircrafts.map((aircraft) => (
                 <tr key={aircraft.id}>
                   <td>{aircraft.type}</td>
                   <td>{aircraft.airlineName}</td>
@@ -100,7 +180,9 @@ const AdminPage = () => {
               ))}
             </tbody>
           </table>
-          <button className="add-btn">Add Aircraft</button>
+          <Link to="/aircraft" class="admin-link">
+            Add Aircraft
+          </Link>
         </section>
 
         <section className="admin-section">
@@ -114,9 +196,11 @@ const AdminPage = () => {
               </tr>
             </thead>
             <tbody>
-              {passengers.map(passenger => (
+              {passengers.map((passenger) => (
                 <tr key={passenger.id}>
-                  <td>{passenger.firstName} {passenger.lastName}</td>
+                  <td>
+                    {passenger.firstName} {passenger.lastName}
+                  </td>
                   <td>{passenger.phoneNumber}</td>
                   <td>
                     <button className="edit-btn">Edit</button>
@@ -126,7 +210,9 @@ const AdminPage = () => {
               ))}
             </tbody>
           </table>
-          <button className="add-btn">Add Passenger</button>
+          <Link to="/passenger" class="admin-link">
+            Add Passenger
+          </Link>
         </section>
       </div>
     </div>
