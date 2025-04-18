@@ -4,8 +4,7 @@ import "../styles/theme.css";
 const AddAirport = () => {
   const [formData, setFormData] = useState({
     name: "",
-    city: "",
-    country: "",
+    code: "",
   });
 
   const handleChange = (e) => {
@@ -21,12 +20,11 @@ const AddAirport = () => {
 
     const airportData = {
       name: formData.name,
-      city: formData.city,
-      country: formData.country,
+      code: formData.code,
     };
 
     try {
-      const response = await fetch("http://52.90.70.129:8080/api/airports", {
+      const response = await fetch("http://52.90.70.129:8080/api/airport", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(airportData),
@@ -59,7 +57,7 @@ const AddAirport = () => {
             required
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="city">City:</label>
           <input
             type="text"
@@ -69,14 +67,14 @@ const AddAirport = () => {
             onChange={handleChange}
             required
           />
-        </div>
+        </div> */}
         <div className="form-group">
-          <label htmlFor="country">Country:</label>
+          <label htmlFor="code">Code:</label>
           <input
             type="text"
-            id="country"
-            name="country"
-            value={formData.country}
+            id="code"
+            name="code"
+            value={formData.code}
             onChange={handleChange}
             required
           />

@@ -134,7 +134,6 @@ const AdminPage = () => {
               <tr>
                 <th>Code</th>
                 <th>Name</th>
-                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -142,15 +141,12 @@ const AdminPage = () => {
                 <tr key={airport.id}>
                   <td>{airport.code}</td>
                   <td>{airport.name}</td>
-                  <td>
-                    <button className="edit-btn">Edit</button>
-                    <button className="delete-btn">Delete</button>
-                  </td>
+
                 </tr>
               ))}
             </tbody>
           </table>
-          <Link to="/airports" class="admin-link">
+          <Link to="/airport" class="admin-link">
             Add Airport
           </Link>
         </section>
@@ -163,7 +159,7 @@ const AdminPage = () => {
                 <th>Type</th>
                 <th>Airline</th>
                 <th>Capacity</th>
-                <th>Actions</th>
+
               </tr>
             </thead>
             <tbody>
@@ -172,10 +168,7 @@ const AdminPage = () => {
                   <td>{aircraft.type}</td>
                   <td>{aircraft.airlineName}</td>
                   <td>{aircraft.numberOfPassengers}</td>
-                  <td>
-                    <button className="edit-btn">Edit</button>
-                    <button className="delete-btn">Delete</button>
-                  </td>
+
                 </tr>
               ))}
             </tbody>
@@ -192,7 +185,7 @@ const AdminPage = () => {
               <tr>
                 <th>Name</th>
                 <th>Phone</th>
-                <th>Actions</th>
+
               </tr>
             </thead>
             <tbody>
@@ -202,10 +195,6 @@ const AdminPage = () => {
                     {passenger.firstName} {passenger.lastName}
                   </td>
                   <td>{passenger.phoneNumber}</td>
-                  <td>
-                    <button className="edit-btn">Edit</button>
-                    <button className="delete-btn">Delete</button>
-                  </td>
                 </tr>
               ))}
             </tbody>
