@@ -23,7 +23,7 @@ const AdminPage = () => {
     const fetchPassengers = async () => {
       let backendPassengers = [];
       let getData;
-      let fetchURL = "http://52.90.70.129:8080/api/passengers";
+      let fetchURL = "http://44.204.87.39:8080/api/passengers";
       try {
         const response = await fetch(fetchURL);
         const rawData = await response.json();
@@ -55,7 +55,7 @@ const AdminPage = () => {
     const fetchAirports = async () => {
       let backendAirports = [];
       let getData;
-      let fetchURL = "http://52.90.70.129:8080/api/airports";
+      let fetchURL = "http://44.204.87.39:8080/api/airports";
       try {
         //  i'm now in the process of changing out
         // the mock data for backend data
@@ -88,7 +88,7 @@ const AdminPage = () => {
     const fetchAircrafts = async () => {
       let backendAircrafts = [];
       let getData;
-      let fetchURL = "http://52.90.70.129:8080/api/aircrafts";
+      let fetchURL = "http://44.204.87.39:8080/api/aircrafts";
       try {
         //  i'm now in the process of changing out
         // the mock data for backend data

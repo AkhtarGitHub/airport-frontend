@@ -26,7 +26,7 @@ const AddAircraft = () => {
     };
 
     try {
-      const response = await fetch("http://52.90.70.129:8080/api/aircraft", {
+      const response = await fetch("http://44.204.87.39:8080/api/aircraft", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(aircraftData),

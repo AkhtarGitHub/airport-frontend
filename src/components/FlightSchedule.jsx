@@ -11,7 +11,7 @@ const FlightSchedule = () => {
     const fetchFlights = async () => {
       let backendFlights =[];
       let getData;
-      let fetchURL = 'http://52.90.70.129:8080/api/aircrafts'
+      let fetchURL = 'http://44.204.87.39:8080/api/aircrafts'
       
       
       try {

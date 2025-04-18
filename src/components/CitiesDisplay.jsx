@@ -12,7 +12,7 @@ const CitiesList = () => {
 	const fetchCities = async () => {
 	  let backendCities =[];
 	  let getData;
-	  let fetchURL = 'http://52.90.70.129:8080/api/cities'
+	  let fetchURL = 'http://44.204.87.39:8080/api/cities'
 	  
 	  
 	  try {

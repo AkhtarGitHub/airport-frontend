@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchFlights = async () => {
       try {
-        const response = await fetch("http://52.90.70.129:8080/api/aircrafts");
+        const response = await fetch("http://44.204.87.39:8080/api/aircrafts");
         const rawData = await response.json();
         const backendFlights = rawData.map((value) => ({
           id: value.id,
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchPassengers = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/passengers");
+        const response = await fetch("http://44.204.87.39:8080/api/passengers");
         const passengers = await response.json();
         console.log("Passengers:", passengers);
       } catch (err) {
