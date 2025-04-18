@@ -10,7 +10,7 @@ const PassengerCheckIn = () => {
       e.preventDefault();
     //about to start adding this feature with backend hookup
     
-    let fetchURL = 'http://localhost:8080/api/passengers'
+    let fetchURL = 'http://44.204.87.39:8080/api/passengers'
     try {
         const response = await fetch(fetchURL);
         const rawData = await response.json();
